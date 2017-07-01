@@ -1,1 +1,0 @@
-# debian7_32bit
