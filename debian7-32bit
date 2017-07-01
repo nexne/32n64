@@ -33,9 +33,14 @@ wget -O /etc/apt/sources.list "https://raw.githubusercontent.com/rizal180499/Aut
 wget "http://www.dotdeb.org/dotdeb.gpg"
 cat dotdeb.gpg | apt-key add -;rm dotdeb.gpg
 
+# remove unused
+apt-get -y --purge remove samba*;
+apt-get -y --purge remove apache2*;
+apt-get -y --purge remove sendmail*;
+apt-get -y --purge remove bind9*;
 
 # update
-apt-get update
+apt-get update; apt-get -y upgrade;
 
 # install webserver
 #apt-get -y install nginx
@@ -209,7 +214,7 @@ echo 'Please send in your comments and/or suggestions to zaf@vsnl.com'
 
 # install squid3
 apt-get -y install squid3
-wget -O /etc/squid3/squid.conf "https://raw.githubusercontent.com/nexne/ani/master/squid3.conf"
+wget -O /etc/squid3/squid.conf "https://raw.githubusercontent.com/nexne/32n64/master/squid3.conf"
 sed -i $MYIP2 /etc/squid3/squid.conf;
 service squid3 restart
 
@@ -275,7 +280,7 @@ chown -R www-data:www-data /home/vps/public_html
 #service nginx start
 service php-fpm start
 service vnstat restart
-service openvpn restart
+#service openvpn restart
 service snmpd restart
 service cron restart
 service ssh restart
@@ -296,7 +301,7 @@ echo "-------"  | tee -a log-install.txt
 echo "OpenSSH  : 22, 143"  | tee -a log-install.txt
 echo "Dropbear : 443, 80"  | tee -a log-install.txt
 echo "Squid3   : 8080, 3128 (limit to IP SSH)"  | tee -a log-install.txt
-echo "OpenVPN  : TCP 1194 (client config : http://$MYIP:81/client.ovpn)"  | tee -a log-install.txt
+#echo "OpenVPN  : TCP 1194 (client config : http://$MYIP:81/client.ovpn)"  | tee -a log-install.txt
 echo "badvpn   : badvpn-udpgw port 7300"  | tee -a log-install.txt
 echo "nginx    : 81"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
