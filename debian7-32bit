@@ -241,7 +241,7 @@ wget -O speedtest "https://raw.githubusercontent.com/ForNesiaFreak/FNS_Debian7/f
 wget -O bench-network "https://raw.githubusercontent.com/ForNesiaFreak/FNS_Debian7/fornesia.com/null/bench-network.sh"
 wget -O ps-mem "https://raw.githubusercontent.com/ForNesiaFreak/FNS_Debian7/fornesia.com/null/ps_mem.py"
 wget -O about "https://raw.githubusercontent.com/nexne/32n64/master/about.sh"
-wget -O about "https://raw.githubusercontent.com/nexne/32n64/master/delete.sh"
+wget -O delete "https://raw.githubusercontent.com/nexne/32n64/master/delete.sh"
 echo "0 0 * * * root /usr/bin/reboot" > /etc/cron.d/reboot
 echo "* * * * * service dropbear restart" > /etc/cron.d/dropbear
 chmod +x menu
