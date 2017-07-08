@@ -242,6 +242,7 @@ wget -O bench-network "https://raw.githubusercontent.com/ForNesiaFreak/FNS_Debia
 wget -O ps-mem "https://raw.githubusercontent.com/ForNesiaFreak/FNS_Debian7/fornesia.com/null/ps_mem.py"
 wget -O about "https://raw.githubusercontent.com/nexne/32n64/master/about.sh"
 wget -O delete "https://raw.githubusercontent.com/nexne/32n64/master/delete.sh"
+wget -O renew "https://raw.githubusercontent.com/nexne/32n64/master/renew.sh"
 echo "0 0 * * * root /usr/bin/reboot" > /etc/cron.d/reboot
 echo "* * * * * service dropbear restart" > /etc/cron.d/dropbear
 chmod +x menu
@@ -259,6 +260,7 @@ chmod +x bench-network
 chmod +x ps-mem
 chmod +x about
 chmod +x delete
+chmod +x renew
 
 #Blockir Torrent
 iptables -A OUTPUT -p tcp --dport 6881:6889 -j DROP
