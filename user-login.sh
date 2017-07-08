@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# Yuk Pantau Pantau
-# Mod by Yonatan Kanu as THORN SSH
+# Ayok Pantau Pantau
+# Mod by 
 # ==========================
 # 
 
@@ -50,10 +50,10 @@ echo "------------------------------------------------"
 
 echo "";
 
-echo -e "ALL SUPPORTED by Yonatan Kanu as THORN SSH"
-echo -e "Contact Person : https://www.facebook.com/kanu.nugraha"
-echo -e "WhatsApp       : 085707136028"
-echo -e "Website        : http://yonatankanu.blogspot.co.id"
-echo -e "Website        : http://yonatankanu.wordpress.com/"
+echo -e "ALL SUPPORTED by "
+echo -e "Contact Person : "
+echo -e "WhatsApp       : "
+echo -e "Website        : "
+echo -e "Website        : "
 
 echo -e ""
