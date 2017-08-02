@@ -243,8 +243,8 @@ wget -O ps-mem "https://raw.githubusercontent.com/ForNesiaFreak/FNS_Debian7/forn
 wget -O about "https://raw.githubusercontent.com/nexne/32n64/master/about.sh"
 wget -O delete "https://raw.githubusercontent.com/nexne/32n64/master/delete.sh"
 wget -O renew "https://raw.githubusercontent.com/nexne/32n64/master/renew.sh"
-wget -O user-expired.sh "https://raw.githubusercontent.com/ForNesiaFreak/FNS_Debian7/fornesia.com/freak/user-expired.sh"
-echo "0 0 * * * root /root/user-expired.sh" > /etc/cron.d/user-expired
+wget -O renew "https://raw.githubusercontent.com/nexne/32n64/master/expired.sh"
+echo "0 0 * * * root /usr/bin/expired" > /etc/cron.d/expired
 echo "0 0 * * * root /usr/bin/reboot" > /etc/cron.d/reboot
 echo "* * * * * service dropbear restart" > /etc/cron.d/dropbear
 chmod +x menu
@@ -263,7 +263,7 @@ chmod +x ps-mem
 chmod +x about
 chmod +x delete
 chmod +x renew
-chmod +x user-expired.sh
+chmod +x expired
 
 #Blockir Torrent
 iptables -A OUTPUT -p tcp --dport 6881:6889 -j DROP
