@@ -243,7 +243,7 @@ wget -O ps-mem "https://raw.githubusercontent.com/ForNesiaFreak/FNS_Debian7/forn
 wget -O about "https://raw.githubusercontent.com/nexne/32n64/master/about.sh"
 wget -O delete "https://raw.githubusercontent.com/nexne/32n64/master/delete.sh"
 wget -O renew "https://raw.githubusercontent.com/nexne/32n64/master/renew.sh"
-wget -O renew "https://raw.githubusercontent.com/nexne/32n64/master/expired.sh"
+wget -O expired "https://raw.githubusercontent.com/nexne/32n64/master/expired.sh"
 echo "0 0 * * * root /usr/bin/expired" > /etc/cron.d/expired
 echo "0 0 * * * root /usr/bin/reboot" > /etc/cron.d/reboot
 echo "* * * * * service dropbear restart" > /etc/cron.d/dropbear
