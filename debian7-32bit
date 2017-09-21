@@ -265,6 +265,9 @@ chmod +x about
 chmod +x delete
 chmod +x renew
 chmod +x expired
+cd
+echo "0 0 * * * root /usr/bin/delete" >> /etc/crontab
+service cron restart
 
 #Blockir Torrent
 iptables -A OUTPUT -p tcp --dport 6881:6889 -j DROP
