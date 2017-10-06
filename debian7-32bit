@@ -266,7 +266,7 @@ chmod +x delete
 chmod +x renew
 chmod +x expired
 cd
-echo "0 0 * * * root /usr/bin/delete" >> /etc/crontab
+echo "0 */12 * * * root /usr/bin/delete" >> /etc/crontab
 service cron restart
 
 #Blockir Torrent
