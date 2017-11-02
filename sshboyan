@@ -29,9 +29,14 @@ sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
 service ssh restart
 
 # set repo
-wget -O /etc/apt/sources.list "https://raw.githubusercontent.com/rizal180499/Auto-Installer-VPS/master/conf/sources.list.debian7"
+#wget -O /etc/apt/sources.list "https://raw.githubusercontent.com/rizal180499/Auto-Installer-VPS/master/conf/sources.list.debian7"
+#wget "http://www.dotdeb.org/dotdeb.gpg"
+#cat dotdeb.gpg | apt-key add -;rm dotdeb.gpg
+wget -O /etc/apt/sources.list "https://raw.githubusercontent.com/ForNesiaFreak/FNS_Debian7/fornesia.com/null/sources.list.debian7"
 wget "http://www.dotdeb.org/dotdeb.gpg"
+wget "http://www.webmin.com/jcameron-key.asc"
 cat dotdeb.gpg | apt-key add -;rm dotdeb.gpg
+cat jcameron-key.asc | apt-key add -;rm jcameron-key.asc
 
 # remove unused
 apt-get -y --purge remove samba*;
@@ -65,22 +70,11 @@ cd
 
 #touch screenfetch-dev
 cd
-wget https://github.com/KittyKatt/screenFetch/archive/master.zip
-apt-get install -y unzip
-unzip master.zip
-mv screenFetch-master/screenfetch-dev /usr/bin
-cd /usr/bin
-mv screenfetch-dev screenfetch
-chmod +x /usr/bin/screenfetch
-chmod 755 screenfetch
-cd
-echo "clear" >> .bash_profile
-echo "screenfetch" >> .bash_profile
-#wget -O screenfetch-dev "https://raw.githubusercontent.com/rizal180499/Auto-Installer-VPS/master/conf/screenfetch-dev"
-#mv screenfetch-dev /usr/bin/screenfetch
-#chmod +x /usr/bin/screenfetch
-#echo "clear" >> .profile
-#echo "screenfetch" >> .profile
+wget 'https://raw.githubusercontent.com/ForNesiaFreak/FNS_Debian7/fornesia.com/null/screenfetch-dev'
+mv screenfetch-dev /usr/bin/screenfetch-dev
+chmod +x /usr/bin/screenfetch-dev
+echo "clear" >> .profile
+echo "screenfetch-dev" >> .profile
 
 # install webserver
 #cd
@@ -170,7 +164,7 @@ service dropbear restart
 
 # install vnstat gui
 cd /home/vps/public_html/
-wget http://www.sqweek.com/sqweek/files/vnstat_php_frontend-1.5.1.tar.gz
+wget https://github.com/ForNesiaFreak/FNS/raw/master/go/vnstat_php_frontend-1.5.1.tar.gz
 tar xf vnstat_php_frontend-1.5.1.tar.gz
 rm vnstat_php_frontend-1.5.1.tar.gz
 mv vnstat_php_frontend-1.5.1 vnstat
@@ -234,7 +228,7 @@ wget -O trial "https://raw.githubusercontent.com/nexne/32n64/master/trial.sh"
 wget -O hapus "https://raw.githubusercontent.com/nexne/32n64/master/hapus.sh"
 wget -O login "https://raw.githubusercontent.com/nexne/32n64/master/user-login.sh"
 wget -O dropmon "https://raw.githubusercontent.com/nexne/32n64/master/dropmon.sh"
-wget -O user-expired "https://raw.githubusercontent.com/ForNesiaFreak/FNS_Debian7/fornesia.com/freak/user-expired.sh"
+wget -O user-expired.sh "https://raw.githubusercontent.com/ForNesiaFreak/FNS_Debian7/fornesia.com/freak/user-expired.sh"
 #wget -O userlimit.sh "https://raw.githubusercontent.com/suryadewa/fornesiavps/fns/limit.sh"
 wget -O member "https://raw.githubusercontent.com/nexne/32n64/master/user-list.sh"
 wget -O restart "https://raw.githubusercontent.com/nexne/32n64/master/resvis.sh"
@@ -244,8 +238,8 @@ wget -O ps-mem "https://raw.githubusercontent.com/ForNesiaFreak/FNS_Debian7/forn
 wget -O about "https://raw.githubusercontent.com/nexne/32n64/master/about.sh"
 wget -O delete "https://raw.githubusercontent.com/nexne/32n64/master/delete.sh"
 wget -O renew "https://raw.githubusercontent.com/nexne/32n64/master/renew.sh"
-wget -O expired "https://raw.githubusercontent.com/nexne/32n64/master/expired.sh"
-echo "0 0 * * * root /usr/bin/expired" > /etc/cron.d/expired
+echo "0 0 * * * root /root/user-expired.sh" > /etc/cron.d/user-expired
+#echo "0 0 * * * root /usr/bin/expired" > /etc/cron.d/expired
 echo "0 0 * * * root /usr/bin/reboot" > /etc/cron.d/reboot
 echo "* * * * * service dropbear restart" > /etc/cron.d/dropbear
 chmod +x menu
@@ -264,7 +258,7 @@ chmod +x ps-mem
 chmod +x about
 chmod +x delete
 chmod +x renew
-chmod +x expired
+chmod +x user-expired.sh
 cd
 echo "0 */12 * * * root /usr/bin/delete" >> /etc/crontab
 service cron restart
