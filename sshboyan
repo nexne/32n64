@@ -178,6 +178,8 @@ cd
 
 # install fail2ban
 apt-get -y install fail2ban;service fail2ban restart
+cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+service fail2ban restart
 
 # Instal DDOS Flate
 if [ -d '/usr/local/ddos' ]; then
@@ -277,6 +279,10 @@ iptables -A FORWARD -m string --algo bm --string "announce.php?passkey=" -j DROP
 iptables -A FORWARD -m string --algo bm --string "torrent" -j DROP
 iptables -A FORWARD -m string --algo bm --string "announce" -j DROP
 iptables -A FORWARD -m string --algo bm --string "info_hash" -j DROP
+#BrutoFurse
+iptables -A INPUT -p tcp --dport 22 -m state --state NEW -m recent --set --name SSH -j ACCEPT
+iptables -A INPUT -p tcp --dport 22 -m recent --update --seconds 600 --hitcount 3 --rttl --name SSH -j LOG --log-prefix "SSH_Brute_Force"
+iptables -A INPUT -p tcp --dport 22 -m recent --update --seconds 600 --hitcount 3 --rttl --name SSH -j DROP
 
 # finishing
 cd
