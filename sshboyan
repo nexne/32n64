@@ -137,15 +137,15 @@ cd
 
 # setting port ssh
 sed -i '/Port 22/a Port 2147' /etc/ssh/sshd_config
-sed -i '/Port 22/a Port 143' /etc/ssh/sshd_config
-sed -i 's/Port 22/Port  22/g' /etc/ssh/sshd_config
+# sed -i '/Port 22/a Port 143' /etc/ssh/sshd_config
+# sed -i 's/Port 22/Port  22/g' /etc/ssh/sshd_config
 service ssh restart
 
 # install dropbear
 apt-get -y install dropbear
 sed -i 's/NO_START=1/NO_START=0/g' /etc/default/dropbear
 sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=443/g' /etc/default/dropbear
-sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 443 -p 109 -p 110 -p 192 -p 427 -p 625 -p 1220"/g' /etc/default/dropbear
+sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 443 -p 109 -p 110 -p 192 -p 427 -p 625 -p 1220 -p 22 -p 143"/g' /etc/default/dropbear
 echo "/bin/false" >> /etc/shells
 echo "/usr/sbin/nologin" >> /etc/shells
 service ssh restart
@@ -240,6 +240,7 @@ wget -O ps-mem "https://raw.githubusercontent.com/ForNesiaFreak/FNS_Debian7/forn
 wget -O about "https://raw.githubusercontent.com/nexne/32n64/master/about.sh"
 wget -O delete "https://raw.githubusercontent.com/nexne/32n64/master/delete.sh"
 wget -O renew "https://raw.githubusercontent.com/nexne/32n64/master/renew.sh"
+wget -O kill "https://raw.githubusercontent.com/nexne/32n64/master/kill.sh"
 echo "0 0 * * * root /root/user-expired.sh" > /etc/cron.d/user-expired
 #echo "0 0 * * * root /usr/bin/expired" > /etc/cron.d/expired
 echo "0 0 * * * root /usr/bin/reboot" > /etc/cron.d/reboot
@@ -261,8 +262,13 @@ chmod +x about
 chmod +x delete
 chmod +x renew
 chmod +x user-expired.sh
+chmod +x kill
 cd
 echo "0 */12 * * * root /usr/bin/delete" >> /etc/crontab
+echo "* * * * * root service dropbear restart" >> /etc/crontab
+echo "*/10 * * * * root service squid3 restart" >> /etc/crontab
+echo "* * * * * root /usr/bin/kill" >> /etc/crontab
+echo "* * * * * root sleep 10; /usr/bin/kill" >> /etc/crontab
 service cron restart
 
 #Blockir Torrent
