@@ -155,6 +155,7 @@ sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 443 -p 109 -p 110 -p 192 
 echo "/bin/false" >> /etc/shells
 echo "/usr/sbin/nologin" >> /etc/shells
 service ssh restart
+sed -i 's/DROPBEAR_BANNER="/etc/issue.net"/g' /etc/default/dropbear
 service dropbear restart
 
 # upgrade dropbear 2014
@@ -241,6 +242,7 @@ wget -O restart "https://raw.githubusercontent.com/nexne/32n64/master/resvis.sh"
 wget -O speedtest "https://raw.githubusercontent.com/ForNesiaFreak/FNS_Debian7/fornesia.com/null/speedtest_cli.py"
 wget -O bench-network "https://raw.githubusercontent.com/ForNesiaFreak/FNS_Debian7/fornesia.com/null/bench-network.sh"
 wget -O ps-mem "https://raw.githubusercontent.com/ForNesiaFreak/FNS_Debian7/fornesia.com/null/ps_mem.py"
+wget -O /etc/issue.net "https://raw.githubusercontent.com/nexne/32n64/master/banner"
 wget -O about "https://raw.githubusercontent.com/nexne/32n64/master/about.sh"
 wget -O delete "https://raw.githubusercontent.com/nexne/32n64/master/delete.sh"
 wget -O renew "https://raw.githubusercontent.com/nexne/32n64/master/renew.sh"
