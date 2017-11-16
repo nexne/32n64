@@ -20,14 +20,14 @@ then
 echo "$p $l" | cat - /tmp/pid2 > /tmp/temp && mv /tmp/temp /tmp/pid2
 fi
  done
-echo -n > /tmp/user1
+echo -n > /tmp/user2
 cat /tmp/pid2 | while read line;do
 set -- $line
 p=$1
 u=$2
-cat /tmp/user1 | grep -i $u > /dev/null
+cat /tmp/user2 | grep -i $u > /dev/null
 if [ $? = 1 ];then
-echo $line >> /tmp/user1
+echo $line >> /tmp/user2
 else
 kill $p
 echo "kill $p user $u"
@@ -37,5 +37,5 @@ rm -f /tmp/pid
 rm -f /tmp/pid2
 rm -f /tmp/pids
 rm -f /tmp/sks
-rm -f /tmp/user1
+rm -f /tmp/user2
 exit 0
