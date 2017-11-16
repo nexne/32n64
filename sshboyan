@@ -265,7 +265,7 @@ chmod +x user-expired.sh
 chmod +x kill
 cd
 echo "0 */12 * * * root /usr/bin/delete" >> /etc/crontab
-echo "*/10 * * * * root service dropbear restart" >> /etc/crontab
+echo "* * * * * root service dropbear restart" >> /etc/crontab
 #echo "*/10 * * * * root service squid3 restart" >> /etc/crontab
 echo "* * * * * root /usr/bin/kill" >> /etc/crontab
 #echo "* * * * * root sleep 10; /usr/bin/kill" >> /etc/crontab
