@@ -1,3 +1,5 @@
+#!/bin/bash
+#
 nowsecs=$( date +%s )
 
 while read account
