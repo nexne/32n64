@@ -216,12 +216,12 @@ sed -i $MYIP2 /etc/squid3/squid.conf;
 service squid3 restart
 
 # install webmin
-cd
-wget -O webmin-current.deb "http://www.webmin.com/download/deb/webmin-current.deb"
-dpkg -i --force-all webmin-current.deb;
-apt-get -y -f install;
-rm /root/webmin-current.deb
-service webmin restart
+#cd
+#wget -O webmin-current.deb "http://www.webmin.com/download/deb/webmin-current.deb"
+#dpkg -i --force-all webmin-current.deb;
+#apt-get -y -f install;
+#rm /root/webmin-current.deb
+#service webmin restart
 
 # download script
 cd /usr/bin
@@ -305,7 +305,7 @@ service ssh restart
 service dropbear restart
 service fail2ban restart
 service squid3 restart
-service webmin restart
+#service webmin restart
 rm -rf ~/.bash_history && history -c
 echo "unset HISTFILE" >> /etc/profile
 
