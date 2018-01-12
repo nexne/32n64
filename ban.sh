@@ -1,4 +1,4 @@
-               #!/bin/bash
+#!/bin/bash
                #/usr/local/bin/userban
                #!/bin/bash
                # Created by http://www.sshinjector.net
