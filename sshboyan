@@ -217,7 +217,7 @@ sed -i $MYIP2 /etc/squid3/squid.conf;
 service squid3 restart
 
 # bannerssh
-wget https://raw.githubusercontent.com/nexne/32n64/master/unban.sh
+wget https://raw.githubusercontent.com/nexne/32n64/master/bannerssh
 mv ./bannerssh /bannerssh
 chmod 0644 /bannerssh
 service dropbear restart
