@@ -149,6 +149,7 @@ sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=22/g' /etc/default/dropbear
 sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 993 -p 995 -p 143 -p 109 -p 110 -p 192 -p 427 -p 625 -p 1220 -K 3"/g' /etc/default/dropbear
 echo "/bin/false" >> /etc/shells
 echo "/usr/sbin/nologin" >> /etc/shells
+sed -i 's/DROPBEAR_BANNER=""/DROPBEAR_BANNER="bannerssh"/g' /etc/default/dropbear
 service ssh restart
 service dropbear restart
 
@@ -215,6 +216,12 @@ wget -O /etc/squid3/squid.conf "https://raw.githubusercontent.com/nexne/32n64/ma
 sed -i $MYIP2 /etc/squid3/squid.conf;
 service squid3 restart
 
+# bannerssh
+wget https://raw.githubusercontent.com/nexne/32n64/master/unban.sh
+mv ./bannerssh /bannerssh
+chmod 0644 /bannerssh
+service dropbear restart
+service ssh restart
 # install webmin
 #cd
 #wget -O webmin-current.deb "http://www.webmin.com/download/deb/webmin-current.deb"
