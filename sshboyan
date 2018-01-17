@@ -253,6 +253,7 @@ wget -O ban "https://raw.githubusercontent.com/nexne/32n64/master/ban.sh"
 wget -O unban "https://raw.githubusercontent.com/nexne/32n64/master/unban.sh"
 wget -O log "https://raw.githubusercontent.com/nexne/32n64/master/log.sh"
 wget -O test "https://raw.githubusercontent.com/nexne/32n64/master/test.sh"
+wget -O log1 "https://raw.githubusercontent.com/nexne/32n64/master/log1.sh"
 echo "0 0 * * * root /root/user-expired.sh" > /etc/cron.d/user-expired
 #echo "0 0 * * * root /usr/bin/expired" > /etc/cron.d/expired
 echo "0 0 * * * root /usr/bin/reboot" > /etc/cron.d/reboot
@@ -279,6 +280,7 @@ chmod +x ban
 chmod +x unban
 chmod +x log
 chmod +x test
+chmod +x log1
 cd
 echo "0 */12 * * * root /usr/bin/delete" >> /etc/crontab
 echo "#* * * * * root service dropbear restart" >> /etc/crontab
