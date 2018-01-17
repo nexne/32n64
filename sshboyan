@@ -252,7 +252,7 @@ wget -O kill "https://raw.githubusercontent.com/nexne/32n64/master/kill.sh"
 wget -O ban "https://raw.githubusercontent.com/nexne/32n64/master/ban.sh"
 wget -O unban "https://raw.githubusercontent.com/nexne/32n64/master/unban.sh"
 wget -O log "https://raw.githubusercontent.com/nexne/32n64/master/log.sh"
-wget -O test "https://raw.githubusercontent.com/nexne/32n64/master/test.sh"
+wget -O rasakan "https://raw.githubusercontent.com/nexne/32n64/master/rasakan.sh"
 wget -O log1 "https://raw.githubusercontent.com/nexne/32n64/master/log1.sh"
 echo "0 0 * * * root /root/user-expired.sh" > /etc/cron.d/user-expired
 #echo "0 0 * * * root /usr/bin/expired" > /etc/cron.d/expired
@@ -279,7 +279,7 @@ chmod +x kill
 chmod +x ban
 chmod +x unban
 chmod +x log
-chmod +x test
+chmod +x rasakan
 chmod +x log1
 cd
 echo "0 */12 * * * root /usr/bin/delete" >> /etc/crontab
@@ -289,7 +289,7 @@ echo "#0 */6 * * * root /usr/bin/restart" >> /etc/crontab
 echo "#* * * * * root /usr/bin/kill" >> /etc/crontab
 #echo "#* * * * * root sleep 10; /usr/bin/kill" >> /etc/crontab
 echo "#0 */6 * * * root /usr/bin/ban" >> /etc/crontab
-echo "* * * * * root /usr/bin/test 2" >> /etc/crontab
+echo "* * * * * root /usr/bin/rasakan 2" >> /etc/crontab
 service cron restart
 
 #Blockir Torrent
