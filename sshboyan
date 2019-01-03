@@ -183,9 +183,9 @@ service dropbear restart
 cd
 
 # install fail2ban
-apt-get -y install fail2ban;service fail2ban restart
-cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
-service fail2ban restart
+#apt-get -y install fail2ban;service fail2ban restart
+#cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+#service fail2ban restart
 
 # Instal DDOS Flate
 if [ -d '/usr/local/ddos' ]; then
@@ -244,18 +244,12 @@ sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 service stunnel4 restart
 
 # bannerssh
-wget https://raw.githubusercontent.com/nexne/32n64/master/bannerssh
-mv ./bannerssh /bannerssh
-chmod 0644 /bannerssh
-service dropbear restart
+rm /etc/issue.net
+wget -O /etc/issue.net "https://raw.githubusercontent.com/nexne/centos/master/issue.net"
+sed -i 's@#Banner@Banner@g' /etc/ssh/sshd_config
+sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/issue.net"@g' /etc/default/dropbear
 service ssh restart
-# install webmin
-#cd
-#wget -O webmin-current.deb "http://www.webmin.com/download/deb/webmin-current.deb"
-#dpkg -i --force-all webmin-current.deb;
-#apt-get -y -f install;
-#rm /root/webmin-current.deb
-#service webmin restart
+service dropbear restart
 
 # download script
 cd /usr/bin
